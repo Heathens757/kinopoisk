@@ -3,7 +3,10 @@ from .models import *
 # main
 def main(request):
     movies = Movie.objects.all()
-    return render(request, 'kinopoisk/main.html', {'movies': movies})
+    return render(request, 'kinopoisk/main.html', {
+        'movies': movies,
+        'title': 'Фильмы',
+        })
 
 
 def movie_list(request):

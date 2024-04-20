@@ -2,21 +2,35 @@
 {% block title %} Movies {% endblock %}
 {% block content %}
 <div class="container">
+  <h1 class='d-flex justify-content-center'>{{title}}</h1>
+  <div class='d-flex flex-wrap justify-content-around'>
   {% for movie in movies %}
     <div class="card mb-3" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="{{movie.poster.url}}" class="img-fluid rounded-start" alt="...">
+          <img src="{{movie.poster.url}}" class="img-fluid rounded-start" alt="..." style='width: 600px'>
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{movie.title}}</h5>
-            <p class="card-text">{{movie.description}}</p>
-            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            <div class='d-flex flex-column justify-content-between'>
+              <h5 class="card-title">{{movie.title}}</h5>
+              <p>рейтинг:<span>{{movie.rating}}</span></p>
+              <ul>
+                {% for gener in movie.genres.all %}
+                  {% if forloop.counter <= 3 %}
+                    <li>
+                      <a href="#" class='knopka text-light text-decoration-none'>{{gener.name}}{% if not farloop.last %}, {% endif %}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+            <span class="text-secondary"><small>{{movie.release_date}}</small></span>
           </div>
         </div>
       </div>
     </div>
   {% endfor %}
+  </div>
 </div>
 {% endblock %}
