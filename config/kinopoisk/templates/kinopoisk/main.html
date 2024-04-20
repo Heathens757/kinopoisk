@@ -8,18 +8,18 @@
     <div class="card mb-3" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="{{movie.poster.url}}" class="img-fluid rounded-start" alt="..." style='width: 600px'>
+          <img src="{{movie.poster.url}}" class="img-fluid rounded-start" alt="..." style='width: 700px'>
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <div class='d-flex flex-column justify-content-between'>
+            <div class='d-flex flex-column justify-content-around'>
               <h5 class="card-title">{{movie.title}}</h5>
-              <p>рейтинг:<span>{{movie.rating}}</span></p>
+              <p>рейтинг: <span>{{movie.rating}}</span></p>
               <ul>
                 {% for gener in movie.genres.all %}
-                  {% if forloop.counter <= 3 %}
+                  {% if forloop.counter <= 4 %}
                     <li>
-                      <a href="#" class='knopka text-light text-decoration-none'>{{gener.name}}{% if not farloop.last %}, {% endif %}</a>
+                      <a href="#" class='text-light text-decoration-none'>{{gener.name}}</a>
                     </li>
                   {% endif %}
                 {% endfor %}
