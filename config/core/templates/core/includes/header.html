@@ -1,16 +1,18 @@
+{% load static %}
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="{% url 'main' %}">
+      <img style='filter: invert(1);'
+        src='{% static "core/img/21pilots.png" %}' 
+        alt=''>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'main' %}">Films</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'main' %}">Films</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'actors_list' %}">Actors</a>
@@ -34,18 +36,55 @@
         </li> -->
       </ul>
       <div class="nav-item">
-        {% if request.user.is_authenticated %}
+        {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
           <a class="btn btn-outline-success" href="{% url 'genres_list' %}">Profile</a>
           <a class="btn btn-outline-success" href="{% url 'genres_list' %}">Sign out</a>
-        {% else %}
-          <a class="btn btn-outline-success" href="{% url 'genres_list' %}">Sign in</a>
-          <a class="btn btn-outline-success" href="{% url 'genres_list' %}">Register</a>
-        {% endif %}
+        {% comment %} {% else %} {% endcomment %}
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalIn">Войти</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalReg">Регистрация</button>
+        {% comment %} {% endif %} {% endcomment %}
       </div>
       <!-- <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form> -->
     </div>
+    <div class="modal fade" id="exampleModalReg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Регистрация</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="">
+              <input type="text" class='form-control' name="username" id="" placeholder='Введите логин...' requiered>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModalIn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="">
+              <input type="text" name="" id="" requiered>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Вход</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div>
 </nav>

@@ -1,4 +1,22 @@
-.img-fluid {
-  max-width: 130% !important;
-  height: auto;
+.right-side {
+  width: 100%;
+}
+
+.left-size {
+  margin-right: 3rem; 
+}
+
+.info-grid__title {
+  margin-right: 1rem;
+}
+
+.movie__info-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.info-grid__item {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
 }

@@ -1,16 +1,15 @@
 {% extends 'core/base.html' %}
-{% block title %} Movies {% endblock %}
+{% block title %} {{title}} {% endblock %}
 {% block content %}
 <div class="container">
   <h1 class='d-flex justify-content-center'>{{title}}</h1>
-  <div class='d-flex flex-wrap justify-content-around'>
+  <div class='d-flex flex-wrap justify-content-center gap-4'>
   {% for movie in movies %}
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="{{movie.poster.url}}" class="img-fluid rounded-start" alt="..." style='width: 700px'>
-        </div>
-        <div class="col-md-8">
+    <a href='{% url "movie_detail" movie_id=movie.id %}' class='text-decoration-none text-light p-0 m-0 d-block'>
+      <div class="card mb-3" style="max-width: 540px;">
+          <div class=" d-flex align-items-start">
+          <img src="{{movie.poster.url}}" class="img-fluid rounded-start" alt="..." style='width: 450px'>
+          
           <div class="card-body">
             <div class='d-flex flex-column justify-content-around'>
               <h5 class="card-title">{{movie.title}}</h5>
@@ -27,9 +26,9 @@
             </div>
             <span class="text-secondary"><small>{{movie.release_date}}</small></span>
           </div>
-        </div>
       </div>
     </div>
+    </a>
   {% endfor %}
   </div>
 </div>

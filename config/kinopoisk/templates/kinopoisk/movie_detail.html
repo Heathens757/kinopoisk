@@ -1,7 +1,41 @@
 {% extends 'core/base.html' %}
 {% block title %} actor_detail {% endblock %}
 {% block content %}
-  <div>
-    <p>hello world!</p>
+<div class="container mt-4 mb-4">
+  <div class="d-flex align-items-start justify-content-between">
+    <div class="left-side">
+      <img src="{{movie.poster.url}}" alt="">
+      <p>rating: {{movie.rating}}</p>
+    </div> 
+    <div class="right-side ms-4">
+      <h1>{{movie.title}}</h1>
+      <h2>Desc:</h2>
+      <p>{{movie.description}}</p>
+
+      <section class='movie__info-grid'>
+        <div class="info-grid__feature">
+          <div class="info-grid__item">
+            <p class="info-grid__title">release date:</p>
+            <p class="info-grid__value">{{movie.release_date}}</p>
+          </div>
+          <div class="info-grid__item">
+            <p class="info-grid__title">duration:</p>
+            <p class="info-grid__value">{{movie.duration}} min.</p>
+          </div>
+          <div class="info-grid__item">
+            <p class="info-grid__title">genres:</p>
+            <ul class="list-unstyled d-flex flex-wrap gap-1">
+              {% for genre in movie.genres.all %}
+                <li><a href="" class="text-decoration-none text-light">{{genre.name}}{% if not forloop.last %},{% endif %}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
   </div>
+  {% comment %} <iframe width="640" height="384" src="https://video.sibnet.ru/shell.php?videoid={{movie.player}}" frameborder="0" scrolling="no" allowfullscreen></iframe> {% endcomment %}
+  <video class='d-flex' src="{{movie.movie_file.url}}" controls width="640" height="384"></video>
+</div>
 {% endblock %}

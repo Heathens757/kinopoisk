@@ -31,8 +31,10 @@ def sound_engineer_list(request):
     })
 
 def genre_list(request):
-    genres = Movie.objects.all()
-    return render(request, 'kinopoisk/genre_list.html', {'genres': genres})
+    genres = Genre.objects.all()
+    return render(request, 'kinopoisk/genre_list.html', {
+        'genres': genres, 'title': 'жанры'
+    })
 
 
 #dinamic

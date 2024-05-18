@@ -1,7 +1,28 @@
 {% extends 'core/base.html' %}
-{% block title %} actor_detail {% endblock %}
+{% block title %} {{title}} {% endblock %}
 {% block content %}
-  <div>
-    <p>hello world!</p>
+<div class="container">
+  <h1 class='d-flex justify-content-center'>{{title}}</h1>
+  <div class='d-flex flex-wrap justify-content-around'>
+  {% for person in persons %}
+    {% comment %} <a href='' class='text-decoration-none text-light'> {% endcomment %}
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{person.photo.url}}" class="img-fluid rounded-start" alt="..." style='width: 700px'>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <div class='d-flex flex-column justify-content-around'>
+                <h5 class="card-title">{{person.name}}</h5>
+              </div>
+              <span class="text-secondary"><small>{{person.birth_date}}</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% comment %} </a> {% endcomment %}
+  {% endfor %}
   </div>
+</div>
 {% endblock %}

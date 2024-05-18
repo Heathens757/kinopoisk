@@ -46,7 +46,8 @@ class Movie(models.Model):
     poster = models.ImageField(
         upload_to="kinopoisk/images/movies/posters/",
         blank=True, null=True)
-
+    player = models.CharField(max_length=25, blank=True, null=True)
+    movie_file = models.FileField(upload_to='kinopoisk/videos/movies/movie_files/', blank=True, null=True)
 
 class MovieReview(models.Model):
     author = models.ForeignKey(
